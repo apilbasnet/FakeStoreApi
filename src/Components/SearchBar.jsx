@@ -162,7 +162,7 @@ function SearchBar() {
                 <div className='   w-[80%] h-[80%] m-auto   flex flex-col justify-center items-center'>
 
 
-                    <div onFocus={handleFocus} onBlur={handleBlur} onChange={handleSearch} className={` my-3 relative w-[40rem]  `}>
+                    <div onFocus={handleFocus} onBlur={handleBlur} onChange={handleSearch} className={` flex gap-5 my-3 relative w-[60rem]  `}>
 
                         <div className="absolute top-3 left-3 ">
                             <FaSearch />
@@ -172,7 +172,7 @@ function SearchBar() {
                             id="searchInput"
                             type="text"
                             placeholder="Search"
-                            className={` pl-10 pr-4 py-2 w-full  border border-gray-300 rounded-lg focus:outline-none focus:ring focus:border-x-zinc-900`}
+                            className={` pl-10 pr-4 py-2 w-full h-11 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:border-x-zinc-900`}
 
                         />
 
@@ -192,10 +192,10 @@ function SearchBar() {
 
 
                             <div className='flex'>
-                                <label className='mt-2 mr-2 text-sm  text-neutral-500 '> Category
+                                <label className='mr-2 text-xs  text-neutral-500 '> Category
 
                                     <Dropdown >
-                                        <Dropdown.Toggle className='bg-zinc-500 min-w-[11rem] flex justify-between items-center' variant="secondary" id="dropdown-basic">
+                                        <Dropdown.Toggle className='bg-zinc-500 min-w-[8rem] h-7 flex justify-between items-center' variant="secondary" id="dropdown-basic">
                                             {selectedCategory}
                                         </Dropdown.Toggle>
 
@@ -210,9 +210,9 @@ function SearchBar() {
 
                                 </label>
 
-                                <label className='mt-2 mr-2 text-sm  text-neutral-500' > Price
+                                <label className=' mr-2 text-xs  text-neutral-500' > Price
                                     <Dropdown  >
-                                        <Dropdown.Toggle className='bg-zinc-500 min-w-[11rem] flex justify-between items-center ' variant="secondary" id="dropdown-basic">
+                                        <Dropdown.Toggle className='bg-zinc-500 min-w-[8rem] h-7 flex justify-between items-center ' variant="secondary" id="dropdown-basic">
                                             {selectedPrice}
                                         </Dropdown.Toggle>
 
