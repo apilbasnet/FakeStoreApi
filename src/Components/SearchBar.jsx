@@ -20,6 +20,7 @@ function SearchBar() {
 
 
 
+
     useEffect(() => {
 
         axios.get('https://fakestoreapi.com/products')
@@ -61,17 +62,27 @@ function SearchBar() {
 
 
     const handleFocus = () => {
-        setIsFocused(true);
+
+        setTimeout(() => {
+            setIsFocused(true)
+        }, 100)
     };
 
     const handleBlur = () => {
-        setIsFocused(false);
+        setTimeout(() => {
+            setIsFocused(false)
+        }, 100)
+
     };
 
     const handleCategoryChange = (category) => {
 
+
         setSelectedCategory(category);
         filterData(category, selectedPrice);
+        setTimeout(() => {
+            setIsFocused(false)
+        }, 100)
         // setSelectedPrice("None")
     }
     const handlePriceChange = (price) => {
@@ -124,6 +135,8 @@ function SearchBar() {
 
 
 
+
+
     console.log(filteredData);
     console.log(selectedPrice);
 
@@ -149,7 +162,7 @@ function SearchBar() {
                 <div className='   w-[80%] h-[80%] m-auto   flex flex-col justify-center items-center'>
 
 
-                    <div className={` my-3 relative w-[40rem]  `}>
+                    <div onFocus={handleFocus} onBlur={handleBlur} onChange={handleSearch} className={` my-3 relative w-[40rem]  `}>
 
                         <div className="absolute top-3 left-3 ">
                             <FaSearch />
@@ -160,9 +173,7 @@ function SearchBar() {
                             type="text"
                             placeholder="Search"
                             className={` pl-10 pr-4 py-2 w-full  border border-gray-300 rounded-lg focus:outline-none focus:ring focus:border-x-zinc-900`}
-                            onFocus={handleFocus}
-                            onBlur={handleBlur}
-                            onChange={handleSearch}
+
                         />
 
 
@@ -177,48 +188,51 @@ function SearchBar() {
                         )}
 
 
-
-                        <div className='flex'>
-                            <label className='mt-2 mr-2 text-sm  text-neutral-500 '> Category
-
-                                <Dropdown >
-                                    <Dropdown.Toggle className='bg-zinc-500 min-w-[11rem] flex justify-between items-center' variant="secondary" id="dropdown-basic">
-                                        {selectedCategory}
-                                    </Dropdown.Toggle>
-
-                                    <Dropdown.Menu>
-                                        <Dropdown.Item onClick={() => handleCategoryChange('None')}>None</Dropdown.Item>
-                                        <Dropdown.Item onClick={() => handleCategoryChange("Men's clothing")} >Men's Clothing</Dropdown.Item>
-                                        <Dropdown.Item onClick={() => handleCategoryChange("Jewelery")} >Jewelery</Dropdown.Item>
-                                        <Dropdown.Item onClick={() => handleCategoryChange("Electronics")} >Electronics</Dropdown.Item>
-                                        <Dropdown.Item onClick={() => handleCategoryChange("Women's clothing")} >Women's Clothing</Dropdown.Item>
-                                    </Dropdown.Menu>
-                                </Dropdown>
-
-                            </label>
-
-                            <label className='mt-2 mr-2 text-sm  text-neutral-500' > Price
-                                <Dropdown >
-                                    <Dropdown.Toggle className='bg-zinc-500 min-w-[11rem] flex justify-between items-center ' variant="secondary" id="dropdown-basic">
-                                        {selectedPrice}
-                                    </Dropdown.Toggle>
-
-                                    <Dropdown.Menu>
-                                        <Dropdown.Item onClick={() => handlePriceChange('None')}>None</Dropdown.Item>
-                                        <Dropdown.Item onClick={() => handlePriceChange(20)}>less than $20 </Dropdown.Item>
-                                        <Dropdown.Item onClick={() => handlePriceChange(50)}>less than $50</Dropdown.Item>
-                                        <Dropdown.Item onClick={() => handlePriceChange(100)}>less than $100</Dropdown.Item>
-                                        <Dropdown.Item onClick={() => handlePriceChange(200)}>less than $200</Dropdown.Item>
-                                        <Dropdown.Item onClick={() => handlePriceChange(500)}>less than $500</Dropdown.Item>
-                                        <Dropdown.Item onClick={() => handlePriceChange(700)}>less than $700</Dropdown.Item>
-                                        <Dropdown.Item onClick={() => handlePriceChange(1000)}>less than $1000</Dropdown.Item>
-                                        <Dropdown.Item onClick={() => handlePriceChange(5000)}>less than $5000</Dropdown.Item>
-                                    </Dropdown.Menu>
-                                </Dropdown>
-                            </label>
+                        {isFocused &&
 
 
-                        </div>
+                            <div className='flex'>
+                                <label className='mt-2 mr-2 text-sm  text-neutral-500 '> Category
+
+                                    <Dropdown >
+                                        <Dropdown.Toggle className='bg-zinc-500 min-w-[11rem] flex justify-between items-center' variant="secondary" id="dropdown-basic">
+                                            {selectedCategory}
+                                        </Dropdown.Toggle>
+
+                                        <Dropdown.Menu>
+                                            <Dropdown.Item onClick={() => handleCategoryChange('None')}>None</Dropdown.Item>
+                                            <Dropdown.Item onClick={() => handleCategoryChange("Men's clothing")} >Men's Clothing</Dropdown.Item>
+                                            <Dropdown.Item onClick={() => handleCategoryChange("Jewelery")} >Jewelery</Dropdown.Item>
+                                            <Dropdown.Item onClick={() => handleCategoryChange("Electronics")} >Electronics</Dropdown.Item>
+                                            <Dropdown.Item onClick={() => handleCategoryChange("Women's clothing")} >Women's Clothing</Dropdown.Item>
+                                        </Dropdown.Menu>
+                                    </Dropdown>
+
+                                </label>
+
+                                <label className='mt-2 mr-2 text-sm  text-neutral-500' > Price
+                                    <Dropdown  >
+                                        <Dropdown.Toggle className='bg-zinc-500 min-w-[11rem] flex justify-between items-center ' variant="secondary" id="dropdown-basic">
+                                            {selectedPrice}
+                                        </Dropdown.Toggle>
+
+                                        <Dropdown.Menu>
+                                            <Dropdown.Item onClick={() => handlePriceChange('None')}>None</Dropdown.Item>
+                                            <Dropdown.Item onClick={() => handlePriceChange(20)}>less than $20 </Dropdown.Item>
+                                            <Dropdown.Item onClick={() => handlePriceChange(50)}>less than $50</Dropdown.Item>
+                                            <Dropdown.Item onClick={() => handlePriceChange(100)}>less than $100</Dropdown.Item>
+                                            <Dropdown.Item onClick={() => handlePriceChange(200)}>less than $200</Dropdown.Item>
+                                            <Dropdown.Item onClick={() => handlePriceChange(500)}>less than $500</Dropdown.Item>
+                                            <Dropdown.Item onClick={() => handlePriceChange(700)}>less than $700</Dropdown.Item>
+                                            <Dropdown.Item onClick={() => handlePriceChange(1000)}>less than $1000</Dropdown.Item>
+                                            <Dropdown.Item onClick={() => handlePriceChange(5000)}>less than $5000</Dropdown.Item>
+                                        </Dropdown.Menu>
+                                    </Dropdown>
+                                </label>
+
+
+                            </div>
+                        }
 
 
 
