@@ -159,6 +159,14 @@ function SearchBar() {
 
 
                 :
+
+
+
+
+
+
+
+
                 <div className='   w-[80%] h-[80%] m-auto   flex flex-col justify-center items-center'>
 
 
@@ -241,6 +249,10 @@ function SearchBar() {
 
 
                     </div>
+
+                    { isFocused && 
+                    
+                    
                     <div>
 
 
@@ -280,18 +292,12 @@ function SearchBar() {
 
 
                     </div>
+                    }
                 </div>
 
 
 
             }
-
-
-
-
-
-
-
         </>
     )
 }
